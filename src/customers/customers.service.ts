@@ -1,19 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { UpdateCustomerDto } from './dto/update-customer.dto';
+import { Customer } from './entities/customer.entity';
 
 @Injectable()
 export class CustomersService {
+  private readonly customers: Customer[];
+
+  constructor() {
+    this.customers = [];
+  }
+
   create(createCustomerDto: CreateCustomerDto) {
-    return 'This action adds a new customer';
+    const customer = new Customer(createCustomerDto);
+    this.customers.push(customer);
+    return customer;
   }
 
   findAll() {
-    return `This action returns all customers`;
+    return this.customers;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} customer`;
+  findOne(id: string) {
+    const customer = this.customers.find((c) => c.id === id);
+    return customer;
   }
 
   update(id: number, updateCustomerDto: UpdateCustomerDto) {
