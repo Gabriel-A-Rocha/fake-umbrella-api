@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { UpdateCustomerDto } from './dto/update-customer.dto';
 import { Customer } from './entities/customer.entity';
@@ -24,7 +28,7 @@ export class CustomersService {
 
   update(id: string, updateCustomerDto: UpdateCustomerDto) {
     const customer = this.findOne(id);
-    if (!customer) throw new BadRequestException(`Customer not found`);
+    if (!customer) throw new NotFoundException();
 
     const entries = Object.entries(updateCustomerDto);
     entries.forEach((pair) => {
@@ -40,9 +44,9 @@ export class CustomersService {
     this.customers = this.customers.filter((c) => c.id !== id);
     const recordsAfter = this.customers.length;
 
-    if (recordsAfter < recordsBefore) {
-      return { message: 'Customer removed from database' };
+    if (recordsAfter === recordsBefore) {
+      throw new NotFoundException();
     }
-    return { message: 'Customer not found' };
+    return { message: 'Customer removed from database' };
   }
 }
