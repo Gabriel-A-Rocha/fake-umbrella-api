@@ -21,6 +21,22 @@ export class CustomersService {
     return this.customers;
   }
 
+  findTopEmployeeCompanies() {
+    // sort by employee count (descending order)
+    this.customers.sort(function (a, b) {
+      return b.employeeCount - a.employeeCount;
+    });
+
+    const list = [];
+    for (let index = 0; index <= 3; index++) {
+      if (!this.customers[index]) {
+        break;
+      }
+      list.push(this.customers[index]);
+    }
+    return list;
+  }
+
   findOne(id: string) {
     const customer = this.customers.find((c) => c.id === id);
     return customer;

@@ -25,6 +25,11 @@ export class CustomersController {
     return this.customersService.findAll();
   }
 
+  @Get('top')
+  findTopEmployeeCompanies() {
+    return this.customersService.findTopEmployeeCompanies();
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.customersService.findOne(id);
