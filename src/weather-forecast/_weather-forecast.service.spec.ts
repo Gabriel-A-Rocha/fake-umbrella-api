@@ -1,5 +1,6 @@
 import { ConfigModule } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
+import { LocationDto } from './dto/location.dto';
 import { WeatherForecastService } from './weather-forecast.service';
 
 describe('WeatherForecastService', () => {
@@ -96,6 +97,18 @@ describe('WeatherForecastService', () => {
     ];
 
     const response = service.checkRainyForecast(forecast);
+
+    expect(response).toBe(true);
+  });
+
+  it('should inform if it is going to rain in the next 5 days', async () => {
+    const location = {
+      city: 'kitchener',
+      state: 'on',
+      country: 'ca',
+    };
+
+    const response = await service.rainNextFiveDays(location);
 
     expect(response).toBe(true);
   });

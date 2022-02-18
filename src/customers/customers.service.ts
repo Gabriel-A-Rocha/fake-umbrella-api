@@ -7,7 +7,13 @@ import { Customer } from './entities/customer.entity';
 export class CustomersService {
   private customers: Customer[] = [];
 
-  constructor() {}
+  constructor() {
+    this.loadExampleCustomers();
+  }
+
+  loadExampleCustomers() {
+    exampleCustomers.forEach((c) => this.customers.push(new Customer(c)));
+  }
 
   create(createCustomerDto: CreateCustomerDto) {
     const customer = new Customer(createCustomerDto);
@@ -64,3 +70,50 @@ export class CustomersService {
     return { message: 'Customer removed from database' };
   }
 }
+
+const exampleCustomers = [
+  {
+    name: 'Pizza Hut',
+    contact: 'Jennifer Smith',
+    phone: '15674234',
+    employeeCount: 25,
+    location: {
+      country: 'CA',
+      city: 'Kitchener',
+      state: 'ON',
+    },
+  },
+  {
+    name: "Domino's",
+    contact: 'Richard Clark',
+    phone: '10942987',
+    employeeCount: 72,
+    location: {
+      country: 'US',
+      city: 'Los Angeles',
+      state: 'CA',
+    },
+  },
+  {
+    name: "Clark's",
+    contact: 'Bret Stalk',
+    phone: '94298711',
+    employeeCount: 19,
+    location: {
+      country: 'BR',
+      city: 'Curitiba',
+      state: 'PR',
+    },
+  },
+  {
+    name: "Joe's",
+    contact: 'Gordon Doon',
+    phone: '22266646',
+    employeeCount: 46,
+    location: {
+      country: 'CL',
+      city: 'Arica',
+      state: 'Arica and Parinacota Region',
+    },
+  },
+];

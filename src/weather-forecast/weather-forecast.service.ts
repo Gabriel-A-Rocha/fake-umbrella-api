@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { ForecastDto, LocationDto } from './dto/location.dto';
 import axios from 'axios';
 import { ConfigService } from '@nestjs/config';
@@ -34,5 +34,11 @@ export class WeatherForecastService {
       }
     }
     return false;
+  }
+
+  async rainNextFiveDays(location: LocationDto) {
+    const { lat, lon } = await this.getGeoCoordinates(location);
+    const fiveDaysForecast = await this.getFiveDaysForecast(lat, lon);
+    return this.checkRainyForecast(fiveDaysForecast);
   }
 }
