@@ -28,12 +28,6 @@ export class WeatherForecastService {
 
   checkRainyForecast(forecast: ForecastDto[]) {
     for (let i = 0; i < forecast.length; i++) {
-      /*
-      [
-        { id: 600, main: 'Snow', description: 'light snow', icon: '13d' },
-        { id: 511, main: 'Rain', description: 'freezing rain', icon: '13d' }
-      ]
-      */
       const dailyForecast = forecast[i].weather;
       if (dailyForecast.some((w) => w.main === 'Rain')) {
         return true;
