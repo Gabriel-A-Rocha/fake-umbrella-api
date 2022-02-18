@@ -14,7 +14,7 @@ describe('WeatherForecastService', () => {
     service = module.get<WeatherForecastService>(WeatherForecastService);
   });
 
-  it.skip('should retrieve Kitchener,ON,CA geo coordinates', async () => {
+  it('should retrieve Kitchener,ON,CA geo coordinates', async () => {
     const location = {
       city: 'kitchener',
       state: 'on',
@@ -35,7 +35,7 @@ describe('WeatherForecastService', () => {
     expect(lon).toEqual(data.lon);
   });
 
-  it.skip('should retrieve Los Angeles,CA,US geo coordinates', async () => {
+  it('should retrieve Los Angeles,CA,US geo coordinates', async () => {
     const location = {
       city: 'los angeles',
       state: 'ca',
@@ -56,7 +56,7 @@ describe('WeatherForecastService', () => {
     expect(lon).toEqual(geoData.lon);
   });
 
-  it.skip('should get 5 days forecast (3 hour gap) from geo coordinates', async () => {
+  it('should get 5 days forecast (3 hour gap) from geo coordinates', async () => {
     const lat = 43.451291;
     const lon = -80.4927815;
 

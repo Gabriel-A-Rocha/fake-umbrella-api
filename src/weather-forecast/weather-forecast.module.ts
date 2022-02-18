@@ -6,5 +6,6 @@ import { WeatherForecastService } from './weather-forecast.service';
   imports: [ConfigModule.forRoot()],
   controllers: [],
   providers: [WeatherForecastService],
+  exports: [WeatherForecastService],
 })
 export class WeatherForecastModule {}
