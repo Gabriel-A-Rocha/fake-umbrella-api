@@ -98,11 +98,11 @@ const exampleCustomers = [
     name: "Clark's",
     contact: 'Bret Stalk',
     phone: '94298711',
-    employeeCount: 19,
+    employeeCount: 94,
     location: {
-      country: 'BR',
-      city: 'Curitiba',
-      state: 'PR',
+      country: 'MA',
+      city: 'Marrakesh',
+      state: 'Marrakesh-Safi',
     },
   },
   {
