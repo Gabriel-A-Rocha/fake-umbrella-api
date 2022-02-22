@@ -73,7 +73,7 @@ export class CustomersService {
 
 const exampleCustomers = [
   {
-    name: 'Pizza Hut',
+    name: 'Clover Inc.',
     contact: 'Jennifer Smith',
     phone: '15674234',
     employeeCount: 25,
@@ -84,7 +84,7 @@ const exampleCustomers = [
     },
   },
   {
-    name: "Domino's",
+    name: 'Iron Workshop',
     contact: 'Richard Clark',
     phone: '10942987',
     employeeCount: 72,
@@ -95,7 +95,7 @@ const exampleCustomers = [
     },
   },
   {
-    name: "Clark's",
+    name: "Clark's Steak House",
     contact: 'Bret Stalk',
     phone: '94298711',
     employeeCount: 94,
@@ -106,7 +106,7 @@ const exampleCustomers = [
     },
   },
   {
-    name: "Joe's",
+    name: 'Billboard Valley',
     contact: 'Gordon Doon',
     phone: '22266646',
     employeeCount: 46,
