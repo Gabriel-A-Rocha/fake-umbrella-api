@@ -97,7 +97,7 @@ docker build -t fake-umbrella-api .
 **Running the container**
 
 ```code
-docker run -d -p 3000:3000  fake-umbrella-api
+docker run -d -p 3000:3000 fake-umbrella-api
 ```
 
 ## Front End
