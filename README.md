@@ -1,30 +1,14 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+# Fake Umbrella API
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+API created for the the Fake Umbrella challenge, using Nestjs as the backend framework. The API provides endpoints for customer management (create, update, delete) and forecast report (rain status for the next 5 days).
+
+## Requirements
+
+The API uses OpenWeather as weather forecast provider, which require an API key. Please insert your OpenWeather API key in the .env file (according to the .env.example).
+
+If you don't have one, sign-up for free in the following [website](https://home.openweathermap.org/users/sign_up).
 
 ## Installation
 
@@ -32,42 +16,97 @@
 $ npm install
 ```
 
-## Running the app
+## Running the server
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+$ npm start
 ```
 
-## Test
+## Testing the functionality
 
-```bash
-# unit tests
-$ npm run test
+An initial customer load is performed when the app is started, making four examples available.
 
-# e2e tests
-$ npm run test:e2e
+The server is configured to listen requests at port 3000 (http://localhost:3000).
 
-# test coverage
-$ npm run test:cov
+**Get all customers:**
+
+```code
+GET /customers
 ```
 
-## Support
+**Create new customer:**
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```code
+POST /customers
+```
+
+Request body:
+
+```json
+{
+  "name": "XYZ Steak House",
+  "contact": "Morgan Rath",
+  "phone": "+1 (523) 678-764",
+  "employeeCount": 78,
+  "location": {
+    "country": "CA",
+    "city": "Toronto",
+    "state": "ON"
+  }
+}
+```
+
+**Update customer attribute(s):**
+
+```code
+PATCH /customers/customer-id
+```
+
+Request body:
+
+```json
+{
+  "employeeCount": 55
+}
+```
+
+**Delete customer**
+
+```code
+DELETE /customers/customer-id
+```
+
+**Generate report data**
+
+Reveals the four customers with the highest employee count, along with the rain forecast for the next 5 days.
+
+```code
+GET /report
+```
+
+## Running with Docker
+
+A Dockerfile is present in the project folder to containerize the service.
+
+**Creating the Docker image:**
+
+```code
+docker build -t fake-umbrella-api .
+```
+
+**Running the container**
+
+```code
+docker run -d -p 3000:3000  fake-umbrella-api
+```
+
+## Front End
+
+The front end portion of the challenge is an Angular application found in the following repository:
+
+https://github.com/gabriel-a-rocha/fake-umbrella-web
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+- Author - Gabriel A. Rocha
+- LinkedIn - [LinkedIn Profile](https://www.linkedin.com/in/gabrielaltairrocha/)
